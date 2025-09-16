@@ -26,7 +26,7 @@ jobs:
         run: go build -o ../bin/workshop -v ./...
         working-directory: workshop-service
       - name: Upload /bin folder as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4  
         with:
           name: workshop
           path: bin/
@@ -55,7 +55,7 @@ jobs:
         uses: docker/metadata-action@v4
         id: meta
         with:
-          images: ${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
+          images: ${{secrets.DOCKER_USERNAME}}/${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
