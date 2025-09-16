@@ -10,6 +10,7 @@ on:
 env:
   DOCKER_REPOSITORY: tourna
   DOCKER_IMAGE: aelm-workshop-23
+  DOCKER_USERNAME: timsrk21
   GOLANG_VERSION: 1.21.x
 
 jobs:
@@ -55,7 +56,7 @@ jobs:
         uses: docker/metadata-action@v4
         id: meta
         with:
-          images: ${{secrets.DOCKER_USERNAME}}/${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
+          images: ${{env.DOCKER_USERNAME}}/${{env.DOCKER_REPOSITORY}}/${{env.DOCKER_IMAGE}}
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
